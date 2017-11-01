@@ -5,22 +5,19 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
 
     private AudioSource audioSource;
-    private AudioClip sCS; //Star Collect Sound
+    private AudioClip[] audioClips; //Star Collect Sound
 
-	// Use this for initialization
+
 	void Awake ()
     {
+        //HAKEE KOMPONENTIT
         audioSource = GameObject.Find("ScriptBlock").GetComponent <AudioSource>();
 	}
 	
     
     public void Play(int i)
     {
-        switch(i)
-        {
-            case 0:
-
-                break; 
-        }
+        //SOITTAA MÄÄRITETYN ÄÄNEN
+        audioSource.PlayOneShot(audioClips[i]);
     }
 }

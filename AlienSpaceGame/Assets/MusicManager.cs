@@ -6,15 +6,23 @@ public class MusicManager : MonoBehaviour {
 
     private AudioSource audioSource;
     private int isMusicOn;
+    public AudioClip auc;
 
 	void Awake ()
-    {
+    {   
+        //HAKEE KOMPONENTIT JA TALLENNETUT TIEDOT
         audioSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         isMusicOn = PlayerPrefs.GetInt("Music");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Start()
+    {
+        //SOITTAA MUSIIKIN JOS MUSIIKKI ON LAITETTU PÄÄLLE
+        if(isMusicOn == 1)
+        {
+            audioSource.clip = auc;
+            audioSource.Play();
+        }
+    }
+
 }

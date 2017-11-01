@@ -12,16 +12,21 @@ public class StarManager : MonoBehaviour {
     private LevelManager lvlManager;
     private string levelName;
 
-	// Use this for initialization
+    private GameObject[] starsInScene;
+	
 	void Awake()
     {
+        //HAKEE KOMPONENTIT
         lvlManager = GameObject.Find("ScriptBlock").GetComponent<LevelManager>();
-        levelName = lvlManager.levelName;
     }
     void Start()
     {
-
+        //HAKEE TASON NIMEN TALLENTAMISTA VARTEN
+        levelName = lvlManager.levelName;
+        starsInScene = GameObject.FindGameObjectsWithTag("Star");
+        totalStars = starsInScene.Length;
     }
+
     void SaveStars()
     {
         

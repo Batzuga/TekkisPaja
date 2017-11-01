@@ -10,17 +10,20 @@ public class LevelManager : MonoBehaviour {
 
     void Awake()
     {
+        //HAKEE LEVELIN NIMEN
         scene = SceneManager.GetActiveScene();
         levelName = scene.name;
     }
 
     public void ReloadLevel()
     {
+        //LATAA TASON UUDESTAAN
         SceneManager.LoadScene(scene.name);
     }
 
     public void LoadOther(string s)
     {
+        //LATAA HALUTUN KENTÄN f.e MENU tai SEURAAVA KENTTÄ
         SceneManager.LoadScene(s);
     }
 }
