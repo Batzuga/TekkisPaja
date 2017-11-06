@@ -222,7 +222,7 @@ public class PlayerControls2d : MonoBehaviour {
         }
         if(col.gameObject.tag == "Goal")
         {
-            lvlManager.ReloadLevel();
+            lvlManager.LoadOther("SpaceMenu");
         }
     }
     void OnTriggerStay2D(Collider2D col)

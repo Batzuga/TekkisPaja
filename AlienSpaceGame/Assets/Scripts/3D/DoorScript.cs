@@ -27,11 +27,11 @@ public class DoorScript : MonoBehaviour {
         switch(opening)
         {
             case true:
-                door.transform.position = Vector3.Lerp(door.transform.position, endPos, 10f * Time.deltaTime);
+                door.transform.localPosition = Vector3.Lerp(door.transform.localPosition, endPos, 10f * Time.deltaTime);
                 break;
 
             case false:
-                door.transform.position = Vector3.Lerp(door.transform.position, startPos, 10f * Time.deltaTime);
+                door.transform.localPosition = Vector3.Lerp(door.transform.localPosition, startPos, 10f * Time.deltaTime);
                 break;
         }
     }

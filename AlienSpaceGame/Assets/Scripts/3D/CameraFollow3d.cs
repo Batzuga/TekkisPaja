@@ -17,6 +17,6 @@ public class CameraFollow3d : MonoBehaviour {
     {
         pp = player.transform.position;
         //transform.position = new Vector3(pp.x + 10f, 16f, pp.z - 10f);
-        transform.position = Vector3.Lerp(transform.position, new Vector3(pp.x + 10f, 16f, pp.z - 10f), 2f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(pp.x, 20f, pp.z - 17f), 2f * Time.deltaTime);
 	}
 }
