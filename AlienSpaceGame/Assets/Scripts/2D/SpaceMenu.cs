@@ -10,9 +10,13 @@ public class SpaceMenu : MonoBehaviour {
     public Image[] stars;
     public Color c1;
     public Color c2;
+
+    private LevelManager lmanager;
+
 	// Use this for initialization
 	void Start ()
     {
+        lmanager = GameObject.Find("ScriptBlock").GetComponent<LevelManager>();
         Screen.orientation = ScreenOrientation.Landscape;
         for(int i = 0; i < stars.Length; i++)
         {
@@ -38,9 +42,13 @@ public class SpaceMenu : MonoBehaviour {
         lvlSelection = s;
         SetStars();
     }
-
+    public void AbortMission(string s)
+    {
+        lvlSelection = s;
+        EnterLevel();
+    }
     public void EnterLevel()
     {
-        SceneManager.LoadScene(lvlSelection);
+        lmanager.CallWaitTimes(lvlSelection);
     }
 }

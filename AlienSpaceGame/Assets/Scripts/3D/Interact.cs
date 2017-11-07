@@ -6,9 +6,11 @@ using UnityEngine;
 public class Interact : MonoBehaviour {
 
     public int interaction;
+    private LevelManager lmanager;
 
 	void Start ()
     {
+        lmanager = GameObject.Find("ScriptBlock").GetComponent<LevelManager>();
         interaction = 0;
 	}
 
@@ -17,7 +19,13 @@ public class Interact : MonoBehaviour {
         switch(interaction)
         {
             case 0:
-                SceneManager.LoadScene("SpaceMenu");
+                lmanager.CallWaitTimes("SpaceShip");
+                break;
+            case 1:
+                lmanager.CallWaitTimes("Planet");
+                break;
+            case 2:
+                lmanager.CallWaitTimes("SpaceMenu");
                 break;
         }
     }

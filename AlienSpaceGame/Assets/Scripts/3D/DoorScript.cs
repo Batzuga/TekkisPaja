@@ -8,7 +8,7 @@ public class DoorScript : MonoBehaviour {
     private bool opening;
     public Vector3 startPos;
     public Vector3 endPos;
-
+    
 	// Use this for initialization
 	void Start ()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -27,7 +28,10 @@ public class PlayerControls3d : MonoBehaviour{
     private Rigidbody rb;
     private PlayerUI pui;
 
+    private string levelName;
 
+    //PARTS COLLECTED
+    private int batteryCollected;
 
     void Awake()
     {
@@ -39,6 +43,7 @@ public class PlayerControls3d : MonoBehaviour{
 
     void Start ()
     {
+        GetCollected();
         //SETS START VALUES
         canJump = true;
         canMove = true;
@@ -47,12 +52,15 @@ public class PlayerControls3d : MonoBehaviour{
         airControl = 1f;
         baseSpeed = 5f;
         maxEnergy = 100f;
-        energy = 50f;
+        energy = 100f;
         pui.GetEnergy(energy);
-
+        levelName = SceneManager.GetActiveScene().name;
 
 	}
-	
+	void GetCollected()
+    {
+        batteryCollected = PlayerPrefs.GetInt("BatteryCollected");
+    }
 	// Update is called once per frame
 	void Update ()
     {
@@ -64,7 +72,7 @@ public class PlayerControls3d : MonoBehaviour{
         //SETS MOVEMENT SPEED
         movementSpeed = airControl * baseSpeed;
         //REMOVES ENERGY IF MOVING
-        if(moving)
+        if(moving && levelName == "Planet")
         {
             energy -= 1 * Time.deltaTime;
             pui.GetEnergy(energy);
@@ -100,7 +108,7 @@ public class PlayerControls3d : MonoBehaviour{
         {
             if(energy < maxEnergy)
             {
-                energy += 3f * Time.deltaTime;              
+                energy += 5f * Time.deltaTime;              
             }
             if(energy > maxEnergy)
             {
@@ -112,14 +120,30 @@ public class PlayerControls3d : MonoBehaviour{
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "SpacePad")
+        if (col.gameObject.tag == "SpacePad")
         {
             pui.SetInteract(0);
+        }
+        if (col.gameObject.tag == "SpacePad2")
+        {
+            pui.SetInteract(1);
+        }
+        if (col.gameObject.tag == "ShipCMD")
+        {
+            pui.SetInteract(2);
         }
     }
     void OnTriggerExit(Collider col)
     {
         if(col.gameObject.tag == "SpacePad")
+        {
+            pui.HideInteract();
+        }
+        if (col.gameObject.tag == "SpacePad2")
+        {
+            pui.HideInteract();
+        }
+        if (col.gameObject.tag == "ShipCMD")
         {
             pui.HideInteract();
         }
