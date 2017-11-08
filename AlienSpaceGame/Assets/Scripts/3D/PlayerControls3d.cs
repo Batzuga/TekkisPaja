@@ -43,6 +43,7 @@ public class PlayerControls3d : MonoBehaviour{
 
     void Start ()
     {
+        Screen.orientation = ScreenOrientation.Landscape;
         GetCollected();
         //SETS START VALUES
         canJump = true;

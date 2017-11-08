@@ -49,6 +49,7 @@ public class PlayerControls2d : MonoBehaviour {
     }
     void Start ()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         //ANTAA ALKUARVOT
         shipLaunched = false;
         canLaunch = true;

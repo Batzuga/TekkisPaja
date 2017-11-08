@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour {
 
     void Awake()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
+        
         //HAKEE LEVELIN NIMEN
         scene = SceneManager.GetActiveScene();
         levelName = scene.name;
